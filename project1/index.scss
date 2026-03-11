@@ -17,7 +17,7 @@ html{
 main{
     @include displayFlex();
     gap:0.5rem;
-    background-color: black;
+    background-color: lighten(black,20);
     height: 100%;
     width: 100%;
     section{
