@@ -1,0 +1,67 @@
+@import './styles/FounderSection/FounderSection.css';
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+html {
+  font-size: clamp(14px, 1vw, 18px);
+}
+
+body {
+  background-color: black;
+  color: white;
+  overflow-x: hidden;
+}
+
+nav {
+  background-color: transparent;
+  position: fixed;
+  width: 100vw;
+  padding: 1rem 5rem;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+nav img {
+  width: 10rem;
+}
+nav div {
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 1.5rem;
+}
+nav div a {
+  text-decoration: none;
+  color: white;
+  font-size: 2rem;
+}
+nav #about-Button {
+  text-decoration: none;
+  color: white;
+  font-size: 2rem;
+  border: 0.2rem solid white;
+  border-radius: 10rem;
+  padding: 0.3rem 1.8rem;
+  overflow: hidden;
+}
+
+#hero-section {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+#hero-section video {
+  width: 100%;
+}/*# sourceMappingURL=main.css.map */

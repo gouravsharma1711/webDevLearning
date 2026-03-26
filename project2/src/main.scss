@@ -1,0 +1,34 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+}
+html{
+    font-size: clamp(14px,1vw,18px);
+}
+
+
+
+body{
+    background-color:black;
+    color:white;
+    overflow-x: hidden
+}
+
+
+// mixins
+@import './styles/mixins/flex';
+
+
+// other files
+@import "./styles/NavBar/navBar";
+@import "./styles/hero/hero";
+@import './styles/FounderSection/FounderSection.css'
+
+
+
+

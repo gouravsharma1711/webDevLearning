@@ -1,0 +1,32 @@
+nav {
+  background-color: transparent;
+  position:fixed;
+  width: 100vw;
+  padding: 1rem 5rem;
+  z-index: 1000;
+  @include flex(space-between);
+  img {
+    width: 10rem;
+  }
+  div {
+    padding: 0.5rem 1rem;
+    @include flex();
+    gap: 1.5rem;
+    a {
+      text-decoration: none;
+      color: white;
+      font-size: 2rem;
+    }
+  }
+  #about-Button {
+    text-decoration: none;
+    color: white;
+    font-size: 2rem;
+    border: 0.2rem solid white;
+    border-radius: 10rem;
+
+    padding: 0.3rem 1.8rem;
+    overflow: hidden;
+  }
+  
+}
