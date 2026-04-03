@@ -1,33 +1,68 @@
+
+
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
+// Variables & Mixins
+@import './styles/variables';
+@import './styles/mixins/mixins';
+
 html,body{
     height: 100%;
     width: 100%;
-}
-html{
-    font-size: clamp(14px,1vw,18px);
-}
-
-
-
-body{
-    background-color:black;
-    color:white;
-    overflow-x: hidden
+    font-family: 'Poppins', sans-serif;
+    background-color: #000;
+    color: #fff;
 }
 
 
-// mixins
-@import './styles/mixins/flex';
+html {
+    font-size: clamp(10px, 1vw, 16px);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+// Custom Scrollbar
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #ae8625, #f7ef8a);
+    border-radius: 10px;
+}
+
+// Global Classes
+.gold-text {
+    @include text-gold-gradient();
+}
+
+.luxury-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
 
 
 // other files
-@import "./styles/NavBar/navBar";
 @import "./styles/hero/hero";
-@import './styles/FounderSection/FounderSection.css'
+@import './styles/NavBar/navBar';
+@import './styles/FounderSection/FounderSection';
+@import './styles/TeamSection/teamSection';
+@import './styles/WinnerSection/winnerSection';
+@import './styles/WhatsNextSection/whatsNextSection';
+@import './styles/ContactSection/contactSection';
+@import './styles/Footer/footer';
 
 
 
