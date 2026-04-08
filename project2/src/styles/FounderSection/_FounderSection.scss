@@ -2,7 +2,8 @@
 
 #founder-section-main {
   position: relative;
-  background-color: $black;
+  background-color: #050505;
+  
 
   #founder-section {
     position: relative;
@@ -13,8 +14,8 @@
     @include flex-center-column();
 
     #founder-gradient {
-      height: clamp(20rem, 40vw, 35rem);
-      width: clamp(20rem, 40vw, 35rem);
+      height: clamp(32rem, 40vw, 50rem);
+      width: clamp(32rem, 40vw, 50rem);
       @include backgroundGoldLinear();
       border-radius: 100%;
       position: absolute;
@@ -62,7 +63,7 @@
         top: 10%;
         width: 100%;
         text-align: center;
-        font-size: 0.8rem;
+        font-size: 2rem;
       }
     }
 

@@ -1,98 +1,117 @@
 #team-section {
-    padding: $section-padding;
-    background: $black;
+  position: relative;
+  min-height: 120vh;
+  width: 100vw;
+  background-color: #050505;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 70%),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 50px 50px, 50px 50px;
+  padding: 8rem 2rem 2rem 2rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  // 🔹 Subtle Section Decorations
+  .section-decoration-left, .section-decoration-right {
+    position: absolute;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.1;
+    background: linear-gradient(90deg, #d4af37 0%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent, black, transparent);
+  }
+  .section-decoration-left { left: 0; }
+  .section-decoration-right { right: 0; transform: scaleX(-1); }
+
+  // 🔹 Premium Header
+  .section-header {
+    text-align: center;
+    margin-bottom: 12rem; // Extra space for cards breaking boundaries
     position: relative;
-    overflow: hidden;
+    z-index: 10;
 
+    .overline {
+      font-size: 0.75rem;
+      letter-spacing: 0.6rem;
+      color: #d4af37;
+      font-weight: 700;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(2.5rem, 2vw, 4rem);
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: 0.4rem;
+      text-transform: uppercase;
+      margin: 0;
+      background: linear-gradient(180deg, #fff 40%, #8a6e2f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .title-flourish {
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #d4af37, transparent);
+      margin: 2rem auto;
+      position: relative;
+
+      &::before {
+        content: "✦";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #050505;
+        padding: 0 10px;
+        color: #d4af37;
+        font-size: 1.2rem;
+      }
+    }
+
+    .section-subtitle {
+      font-family: "Times New Roman", serif;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+  }
+
+  // 🔹 Cards Container
+  #team-cards-container {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10rem 4rem; // Vertical gap increased for large image overlap
+    position: relative;
+    z-index: 5;
+  }
+}
+
+// 🔹 Responsive adjustments
+@media (max-width: 768px) {
+  #team-section {
+    padding: 6rem 1rem;
+    
     .section-header {
-        text-align: center;
-        margin-bottom: 6rem;
-
-        .sub-title {
-            display: block;
-            font-size: 1rem;
-            letter-spacing: 0.5rem;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-        }
+      margin-bottom: 10rem;
     }
 
-    .team-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
-        max-width: 1400px;
-        margin: 0 auto;
-
-        @include respond-to("laptop") {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        @include respond-to("tablet") {
-            grid-template-columns: repeat(1, 1fr);
-            max-width: 400px;
-        }
+    #team-cards-container {
+      gap: 12rem 2rem;
     }
-
-    .team-card {
-        position: relative;
-        overflow: hidden;
-        aspect-ratio: 1/1.2;
-        background: $dark-grey;
-        transition: $transition-smooth;
-        border: 1px solid rgba($gold-mid, 0.1);
-
-        &:hover {
-            border-color: $gold-mid;
-            
-            .member-image {
-                img {
-                    transform: scale(1.1);
-                    filter: grayscale(0%);
-                }
-            }
-
-            .member-info {
-                background: linear-gradient(to top, rgba($black, 0.95) 0%, rgba($black, 0.7) 100%);
-            }
-        }
-
-        .member-image {
-            width: 100%;
-            height: 100%;
-            position: relative;
-
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                filter: grayscale(100%);
-                transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), filter 1s ease;
-            }
-        }
-
-        .member-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 2.5rem 1.5rem;
-            background: linear-gradient(to top, rgba($black, 0.9) 0%, transparent 100%);
-            transition: $transition-smooth;
-            text-align: center;
-
-            h3 {
-                font-family: $font-luxury;
-                font-size: 1.6rem;
-                margin-bottom: 0.3rem;
-                color: $white;
-            }
-
-            p {
-                font-size: 0.8rem;
-                text-transform: uppercase;
-                letter-spacing: 0.2rem;
-            }
-        }
-    }
+  }
 }

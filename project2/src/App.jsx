@@ -1,31 +1,28 @@
 
-import React from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+import Home from "./component/Home/Home";
 import Layout from "./component/Layout/Layout";
-import HeroSection from "./component/HeroSection/HeroSection";
-import FounderSection from './component/FounderSection/FounderSection'
-import TeamSection from './component/TeamSection/TeamSection.jsx'
-import WinnerSection from './component/WinnerSection/WinnerSection.jsx'
-import WhatsNextSection from './component/WhatsNextSection/WhatsNextSection.jsx'
-import ContactSection from './component/ContactSection/ContactSection.jsx'
-import Footer from './component/Footer/Footer.jsx'
+
+import {createBrowserRouter, RouterProvider } from "react-router-dom";
+import ModelPage from "./component/modelPage/ModelPage";
+
 
 function App() {
 
-  useGSAP(()=>{
-    
-  })
+  const router =createBrowserRouter([
+    {
+      path:'/',
+      element:<Layout/>,
+      children:[
+        {path:'', element:<Home/>},
+        {path:'artist/:artistId',element:<ModelPage/>}
+      ]
+    }
+  ])
+
+
 
   return (
-    <Layout>
-      <HeroSection />
-      <FounderSection />
-      {/* <WinnerSection />
-      <TeamSection />
-      <WhatsNextSection />
-      <ContactSection /> */}
-    </Layout>
+    <RouterProvider router={router} />
   );
 }
 

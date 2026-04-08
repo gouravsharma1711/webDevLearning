@@ -92,9 +92,9 @@
         }
 
         h4 {
-          font-size: 0.8rem;
+          font-size: 1rem;
           letter-spacing: 0.3rem;
-          font-weight: 500;
+          font-weight: 600;
           text-transform: uppercase;
           @include text-gold-gradient();
         }
@@ -116,7 +116,12 @@
         transform: translateY(-50%);
         width: 1px;
         height: 4rem;
-        background: linear-gradient(to bottom, transparent, $gold-mid, transparent);
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          $gold-mid,
+          transparent
+        );
 
         @include respond-to("tablet") {
           display: none;
@@ -142,7 +147,7 @@
       z-index: 1;
 
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: -100%;
@@ -165,6 +170,15 @@
       }
     }
 
+    .event-card,
+    #hero-text-section button,
+    #hero-text-section h3,
+    #hero-text-section h1,
+    #hero-text-section > h4 {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
     // 🔹 Bottom text
     > h4 {
       font-size: 0.8rem;
@@ -176,10 +190,14 @@
       animation: bounce 2s infinite ease-in-out;
 
       @keyframes bounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(10px); }
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(10px);
+        }
       }
     }
   }
 }
-

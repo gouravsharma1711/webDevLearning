@@ -55,15 +55,11 @@ html {
 
 
 // other files
+@import './styles/FounderSection/FounderSection';
 @import "./styles/hero/hero";
 @import './styles/NavBar/navBar';
-@import './styles/FounderSection/FounderSection';
+@import './styles/TeamCard/teamCard';
 @import './styles/TeamSection/teamSection';
-@import './styles/WinnerSection/winnerSection';
-@import './styles/WhatsNextSection/whatsNextSection';
 @import './styles/ContactSection/contactSection';
-@import './styles/Footer/footer';
-
-
-
-
+@import './styles/WinnerSection/winnerSection';
+@import './styles/ModelPage/ModelPage'

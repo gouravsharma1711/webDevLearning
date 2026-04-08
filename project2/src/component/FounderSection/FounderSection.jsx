@@ -109,7 +109,6 @@ function FounderSection() {
         <h3 id="founder-last-name">DROHAR</h3>
         <img src="/images/founder2.png" alt="founder" id="founder-image" />
         <button id="founder-read-more-button">Read About ➡ </button>
-        <Slider />
       </section>
     </div>
   );

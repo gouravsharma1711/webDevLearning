@@ -1,0 +1,308 @@
+#model-page {
+  width: 100%;
+  background-color: $black;
+  color: $white;
+  overflow-x: hidden;
+
+  // 🔹 Global Section Styles
+  section {
+    padding: $section-padding;
+    position: relative;
+    
+    @media (max-width: $tablet) {
+      padding: 5rem 1.5rem;
+    }
+  }
+
+  .header-icon {
+    color: $gold-mid;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    font-family: $font-luxury;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    background: $gold-gradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  // 🔹 1. Hero Section
+  .model-hero {
+    height: 120vh;
+    min-height: 800px;
+    padding: 0;
+    display: flex;
+    align-items: center; // 🔹 Center content vertically
+    overflow: hidden;
+
+    @media (max-width: $tablet) {
+      height: 100vh;
+    }
+
+    .hero-bg-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, $black 15%, transparent 60%, rgba($black, 0.4));
+      z-index: 2;
+    }
+
+    .hero-main-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 110%; // 🔹 Extra for parallax
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .hero-container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 5%; // 🔹 Removed bottom padding for vertical centering
+      position: relative;
+      z-index: 3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; // 🔹 Keep items aligned centrally
+
+      @media (max-width: $tablet) {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-top: 10rem;
+      }
+    }
+
+    .hero-content {
+      flex: 1;
+      .hero-overline {
+        font-family: $font-body;
+        color: $gold-mid;
+        text-transform: uppercase;
+        letter-spacing: 0.5em;
+        font-size: 1.5rem;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 1rem;
+      }
+
+      .model-name {
+        margin-bottom: 0.5rem;
+      }
+
+      .name-underline {
+        width: 100px;
+        height: 2px;
+        background: $gold-linear;
+
+        @media (max-width: $tablet) {
+          margin: 0 auto;
+        }
+      }
+    }
+
+    .hero-side-gallery {
+      display: flex;
+      gap: 1.5rem;
+      margin-left: 4rem;
+
+      @media (max-width: $tablet) {
+        display: none; // 🔹 Hide gallery on small screens for cleaner hero
+      }
+
+      .hero-side-img-wrapper {
+        width: 12rem;
+        height: 18rem;
+        border: 1px solid rgba($gold-mid, 0.3);
+        padding: 5px;
+        background: rgba($black, 0.5);
+        backdrop-filter: blur(5px);
+        transform: translateY(-2rem);
+
+        &:nth-child(even) {
+          transform: translateY(0);
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+  // 🔹 2. Stats Section
+  .model-stats-section {
+    background: radial-gradient(circle at center, #0a0a0a, $black);
+
+    .stats-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .stats-header {
+      text-align: center;
+      margin-bottom: 5rem;
+
+      .description-text {
+        max-width: 800px;
+        margin: 2rem auto 0;
+        font-family: $font-body;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: rgba($white, 0.8);
+      }
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      border: 1px solid rgba($gold-mid, 0.1);
+      padding: 3rem;
+      background: rgba($white, 0.02);
+
+      @media (max-width: $mobile) {
+        grid-template-columns: 1fr 1fr;
+        padding: 1.5rem;
+      }
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1rem;
+      border-bottom: 1px solid rgba($gold-mid, 0.1);
+
+      .stat-label {
+        font-family: $font-body;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+        color: $gold-mid;
+      }
+
+      .stat-value {
+        font-family: $font-luxury;
+        font-size: 1.4rem;
+        color: $white;
+      }
+    }
+  }
+
+  // 🔹 3. Achievements & Vision Sections
+  .achievements-section, .vision-section {
+    .section-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section-header {
+      margin-bottom: 3rem;
+      
+      .title-divider {
+        width: 60px;
+        height: 1px;
+        background: $gold-mid;
+        margin: 1.5rem auto;
+      }
+    }
+  }
+
+  .achievement-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+
+    li {
+      font-family: $font-body;
+      font-size: 1.2rem;
+      color: rgba($white, 0.9);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      .list-bullet {
+        width: 8px;
+        height: 8px;
+        border: 1px solid $gold-mid;
+        rotate: 45deg;
+      }
+    }
+  }
+
+  .vision-text {
+    font-family: $font-luxury;
+    font-size: 1.8rem;
+    line-height: 1.6;
+    font-style: italic;
+    color: $gold-vintage;
+  }
+
+  // 🔹 5. Contact Section
+  .contact-section {
+    background: $dark-grey;
+    border-top: 1px solid rgba($gold-mid, 0.1);
+    text-align: center;
+
+    .section-header {
+      margin-bottom: 4rem;
+      
+      p {
+        font-family: $font-body;
+        letter-spacing: 0.3em;
+        color: $gold-mid;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+      }
+    }
+
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .contact-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      color: rgba($white, 0.7);
+      text-decoration: none;
+      transition: $transition-fast;
+      font-family: $font-body;
+      font-size: 1rem;
+
+      svg {
+        font-size: 1.8rem;
+        color: $gold-mid;
+        transition: $transition-fast;
+      }
+
+      &:hover {
+        color: $white;
+        svg {
+          transform: translateY(-5px);
+          color: $gold-bright;
+        }
+      }
+    }
+  }
+}
