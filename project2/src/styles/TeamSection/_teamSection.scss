@@ -22,7 +22,7 @@
     height: 100%;
     pointer-events: none;
     opacity: 0.1;
-    background: linear-gradient(90deg, #d4af37 0%, transparent 100%);
+    background: linear-gradient(90deg, red 0%, transparent 100%);
     mask-image: linear-gradient(to bottom, transparent, black, transparent);
   }
   .section-decoration-left { left: 0; }
@@ -91,27 +91,13 @@
   // 🔹 Cards Container
   #team-cards-container {
     width: 100%;
-    max-width: 1400px;
+    max-width: 1200px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10rem 4rem; // Vertical gap increased for large image overlap
+    gap: 12rem 2rem; // 🔹 High vertical gap for the overlapping images
     position: relative;
     z-index: 5;
-  }
-}
-
-// 🔹 Responsive adjustments
-@media (max-width: 768px) {
-  #team-section {
-    padding: 6rem 1rem;
-    
-    .section-header {
-      margin-bottom: 10rem;
-    }
-
-    #team-cards-container {
-      gap: 12rem 2rem;
-    }
+    margin-top: 5rem;
   }
 }

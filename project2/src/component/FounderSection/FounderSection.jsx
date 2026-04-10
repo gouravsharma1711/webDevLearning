@@ -9,6 +9,10 @@ function FounderSection() {
   const main = useRef(null);
   const animatedContainer = useRef(null);
 
+  const onReadMoreClick = () => {
+    window.location.href = "/team/3636d5d0-8158-4be9-8f1a-d2f9468f11db";
+  }
+
   useGSAP(
     () => {
       const tl = gsap.timeline({
@@ -91,7 +95,7 @@ function FounderSection() {
   );
 
   return (
-    <div id="founder-section-main" ref={main}>
+    <div id="visionary" ref={main}>
       <section
         id="text-animation-section"
         className="animated-container-hero"
@@ -108,7 +112,7 @@ function FounderSection() {
         <h1 id="founder-first-name">ABHISHEK</h1>
         <h3 id="founder-last-name">DROHAR</h3>
         <img src="/images/founder2.png" alt="founder" id="founder-image" />
-        <button id="founder-read-more-button">Read About ➡ </button>
+        <button id="founder-read-more-button" onClick={onReadMoreClick}>Read About ➡ </button>
       </section>
     </div>
   );

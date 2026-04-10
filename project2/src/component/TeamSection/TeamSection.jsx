@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import TeamCard from "../commonComponents/TeamCard.jsx";
-
+import team from "../../utils/team.js";
 gsap.registerPlugin(ScrollTrigger);
 
 function TeamSection() {
@@ -11,85 +11,67 @@ function TeamSection() {
 
   useGSAP(() => {
     const ctx = gsap.context(() => {
-      
-      // 🔹 Set initial state (prevents flicker)
-      gsap.set([
-        ".overline",
-        ".section-title",
-        ".title-flourish",
-        ".royal-team-card"
-      ], {
+      // 🔹 Set initial state
+      gsap.set([".overline", ".section-title", ".title-flourish"], {
         opacity: 0,
-        y: 40
+        y: 40,
       });
 
-      // 🔥 Main timeline with ScrollTrigger
-      const tl = gsap.timeline({
+      gsap.set(".royal-team-card", {
+        opacity: 0,
+        y: 80,
+        scale: 0.9,
+      });
+
+      // 🔥 Header scrub animation
+      gsap.to([".overline", ".section-title", ".title-flourish"], {
+        opacity: 1,
+        y: 0,
+        stagger: 0.2,
         scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-          end: "top 30%",
-          toggleActions: "play none none reverse",
-        }
+          trigger: ".section-header",
+          start: "top 90%",
+          end: "top 40%",
+          scrub: 1,
+        },
       });
 
-      // 🔹 Header animation
-      tl.to(".overline", {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out"
-      })
-
-      .to(".section-title", {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "expo.out"
-      }, "-=0.5")
-
-      .to(".title-flourish", {
-        opacity: 1,
-        scaleX: 1,
-        duration: 0.8,
-        ease: "power2.out"
-      }, "-=0.6")
-
-      // 🔹 Cards animation (premium feel)
-      .to(".royal-team-card", {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 1.2,
-        stagger: {
-          amount: 0.6,
-          ease: "power2.out"
-        },
-        ease: "expo.out"
-      }, "-=0.4");
-
+      // 🔥 Cards scrub animation
+      const cards = gsap.utils.toArray(".royal-team-card");
+      cards.forEach((card, i) => {
+        gsap.to(card, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          scrollTrigger: {
+            trigger: card,
+            start: "top 95%",
+            end: "top 65%",
+            scrub: 1.5,
+          },
+        });
+      });
 
       // 🔥 Subtle parallax effect
       gsap.to(".section-decoration-left", {
-        y: -50,
+        y: -100,
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top bottom",
           end: "bottom top",
-          scrub: true
-        }
+          scrub: true,
+        },
       });
 
       gsap.to(".section-decoration-right", {
-        y: 50,
+        y: 100,
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top bottom",
           end: "bottom top",
-          scrub: true
-        }
+          scrub: true,
+        },
       });
-
     }, sectionRef);
 
     return () => ctx.revert(); // cleanup
@@ -99,7 +81,7 @@ function TeamSection() {
     <section id="team-section" ref={sectionRef}>
       <div className="section-decoration-left"></div>
       <div className="section-decoration-right"></div>
-      
+
       <header className="section-header">
         <span className="overline">OUR EXCLUSIVE FAMILY</span>
         <h1 className="section-title">MEET THE LEADERSHIP</h1>
@@ -107,16 +89,19 @@ function TeamSection() {
       </header>
 
       <div id="team-cards-container">
-        <TeamCard
-          name="Mrs. Tarushi"
-          role="Manager"
-          image="/images/teamMember1.jpeg"
-        />
-        <TeamCard
-          name="Miss Akanksha"
-          role="Co-Founder"
-          image="/images/teamMember2.jpeg"
-        />
+        {team &&
+          team.map.length > 0 &&
+          team.slice(0,team.length-1).map((member, index) => {
+            return (
+              <TeamCard
+                name={member.name}
+                role={member.role}
+                image={member.image}
+                memberId={member.id}
+                key={`team-member-${member.id}+${index}`}
+              />
+            );
+          })}
       </div>
     </section>
   );

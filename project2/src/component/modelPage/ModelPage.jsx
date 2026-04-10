@@ -1,159 +1,103 @@
 import React, { useMemo, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-import { 
-  FaInstagram, 
-  FaWhatsapp, 
-  FaPhoneAlt, 
-  FaEnvelope, 
-  FaMapMarkerAlt, 
-  FaCrown,
-  FaAward,
-  FaLightbulb
-} from "react-icons/fa";
-import modelsInfo from "../../utils/model";
 import { useParams } from "react-router-dom";
+import modelsInfo from "../../utils/model";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import scrollTrigger from "gsap/ScrollTrigger";
+import { FaInstagram, FaWhatsapp, FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(scrollTrigger);
 
-const ModelPage = () => {
-  const pageRef = useRef(null);
-  const heroRef = useRef(null);
+function ModelPage() {
   const { artistId } = useParams();
+  const videoTagRef = useRef(null);
+  const containerRef = useRef(null);
 
-  // 🔹 Efficient filtering using useMemo
+
+
   const modelInfo = useMemo(() => {
     if (!artistId) return null;
-    return modelsInfo.find(model => model.id === artistId);
+    return modelsInfo.find((model) => model.id === artistId);
   }, [artistId]);
 
+
   useGSAP(() => {
-    if (!modelInfo) return; // Wait until model data is available
+  const mm = gsap.matchMedia();
 
-    const ctx = gsap.context(() => {
-      // 🔹 Hero Entrance Animation
-      const heroTl = gsap.timeline();
-      heroTl.from(".hero-main-img", { 
-        scale: 1.2, 
-        opacity: 0, 
-        duration: 1.5, 
-        ease: "power4.out" 
-      })
-      .from(".hero-content h1", { 
-        y: 100, 
-        opacity: 0, 
-        duration: 1, 
-        ease: "expo.out" 
-      }, "-=0.8")
-      .from(".hero-side-img", { 
-        x: 50, 
-        opacity: 0, 
-        stagger: 0.2, 
-        duration: 1, 
-        ease: "power3.out" 
-      }, "-=0.5");
+  mm.add("(min-width: 703px)", () => {
+    gsap.to(videoTagRef.current, {
+      scale: 5,
+      ease: "none",
+      scrollTrigger: {
+        trigger: videoTagRef.current,
+        start: "top 90%",
+        end: "top 30%",
+        scrub: true,
+        pin: true,
+      },
+    });
+  });
 
-      // 🔹 Stats Section Scroll Animation
-      gsap.from(".stat-item", {
-        scrollTrigger: {
-          trigger: ".stats-grid",
-          start: "top 80%",
-        },
-        y: 40,
-        opacity: 0,
-        stagger: 0.05,
-        duration: 0.8,
-        ease: "power2.out"
-      });
+}, { scope: containerRef });
 
-      // 🔹 Section Titles & Content Fade-in
-      const sections = [".achievements-section", ".vision-section", ".contact-section"];
-      sections.forEach(section => {
-        gsap.from(`${section} .section-header`, {
+  useGSAP(
+    () => {
+      
+      // Animate sections on scroll
+      gsap.utils.toArray(".reveal").forEach((section) => {
+        gsap.from(section, {
+          y: 50,
+          opacity: 0,
+          duration: 1,
           scrollTrigger: {
             trigger: section,
             start: "top 85%",
+            toggleActions: "play none none reverse",
           },
-          y: 30,
-          opacity: 0,
-          duration: 1,
-          ease: "power3.out"
-        });
-
-        gsap.from(`${section} .section-content`, {
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-          },
-          y: 50,
-          opacity: 0,
-          duration: 1.2,
-          ease: "power3.out"
         });
       });
+    },
+    {
+      scope: containerRef,
+    },
+  );
 
-      // 🔹 Hero Parallax
-      gsap.to(".hero-main-img", {
-        y: 100,
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true
-        }
-      });
-
-    }, pageRef);
-
-    return () => ctx.revert();
-  }, [modelInfo]); // Re-run animations if model data changes
-
-  if (!modelInfo) {
-    return (
-      <div className="model-not-found" style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', backgroundColor: '#000' }}>
-        <h2>Artist not found</h2>
-      </div>
-    );
-  }
+  if (!modelInfo) return <div className="loading">Model not found</div>;
 
   return (
-    <div id="model-page" ref={pageRef}>
-      {/* 1. Hero Section */}
-      <section className="model-hero" ref={heroRef}>
-        <div className="hero-bg-overlay"></div>
-        <img src={modelInfo.images[0]} alt={modelInfo.name} className="hero-main-img" />
-        
-        <div className="hero-container">
-          <div className="hero-content">
-            <span className="hero-overline">Professional Model</span>
-            <h1 className="model-name">{modelInfo.name}</h1>
-            <div className="name-underline"></div>
-          </div>
-          
-          <div className="hero-side-gallery">
-            {modelInfo.images.slice(1, 4).map((img, idx) => (
-              <div key={idx} className="hero-side-img-wrapper">
-                <img src={img} alt="" className="hero-side-img" />
-              </div>
-            ))}
+    <div ref={containerRef} id="model-page">
+      <section id="Model-hero-Section">
+        <h2>Shaping the Spotlight</h2>
+        <h1>{modelInfo?.name}</h1>
+      </section>
+      <section id="videoSection">
+        <div id="videoDiv" ref={videoTagRef}>
+          <video src={`${modelInfo?.video}`} autoPlay loop muted></video>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about-section" className="reveal">
+        <div className="container">
+          <div className="about-content">
+            <h3 className="section-title">Professional Journey</h3>
+            <p className="description">{modelInfo?.description}</p>
+            <div className="vision-box">
+              <h4>Vision</h4>
+              <p>{modelInfo?.vision}</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 2. Stats Section */}
-      <section className="model-stats-section">
-        <div className="stats-container">
-          <div className="stats-header">
-            <FaCrown className="header-icon" />
-            <h2>The Profile</h2>
-            <p className="description-text">{modelInfo.description}</p>
-          </div>
-          
+      {/* Stats Section */}
+      <section id="stats-section" className="reveal">
+        <div className="container">
+          <h3 className="section-title">Model Statistics</h3>
           <div className="stats-grid">
-            {Object.entries(modelInfo.stats).map(([key, value]) => (
-              <div key={key} className="stat-item">
-                <span className="stat-label">{key.replace(/([A-Z])/g, ' $1')}</span>
+            {Object.entries(modelInfo?.stats).map(([key, value]) => (
+              <div key={key} className="stat-card">
+                <span className="stat-label">{key.replace(/([A-Z])/g, " $1")}</span>
                 <span className="stat-value">{value}</span>
               </div>
             ))}
@@ -161,69 +105,60 @@ const ModelPage = () => {
         </div>
       </section>
 
-      {/* 3. Achievements Section */}
-      <section className="achievements-section">
-        <div className="section-container">
-          <div className="section-header">
-            <FaAward className="header-icon" />
-            <h2>Achievements</h2>
-            <div className="title-divider"></div>
-          </div>
-          <div className="section-content">
-            <ul className="achievement-list">
-              {modelInfo.achievements.map((item, idx) => (
-                <li key={idx}>
-                  <span className="list-bullet"></span>
-                  {item}
-                </li>
-              ))}
-            </ul>
+      {/* Achievements Section */}
+      <section id="achievements-section" className="reveal">
+        <div className="container">
+          <h3 className="section-title">Achievements & Accolades</h3>
+          <div className="achievements-list">
+            {modelInfo?.achievements.map((achievement, index) => (
+              <div key={index} className="achievement-item">
+                <span className="gold-bullet">✦</span>
+                <p>{achievement}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 4. Vision Section */}
-      <section className="vision-section">
-        <div className="section-container">
-          <div className="section-header">
-            <FaLightbulb className="header-icon" />
-            <h2>My Vision</h2>
-            <div className="title-divider"></div>
-          </div>
-          <div className="section-content">
-            <p className="vision-text">"{modelInfo.vision}"</p>
+      {/* Gallery Section */}
+      <section id="gallery-section" className="reveal">
+        <div className="container">
+          <h3 className="section-title">The Gallery</h3>
+          <div className="gallery-grid">
+            {modelInfo?.images.map((img, index) => (
+              <div key={index} className="gallery-item">
+                <img src={img} alt={`${modelInfo?.name} shot ${index + 1}`} />
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 5. Contact Section */}
-      <section className="contact-section">
-        <div className="section-container">
-          <div className="section-header">
-            <h2>Get In Touch</h2>
-            <p>For bookings and collaborations</p>
-          </div>
-          <div className="section-content contact-grid">
-            <a href={`https://instagram.com/${modelInfo.contact.instagram}`} target="_blank" rel="noopener noreferrer" className="contact-link">
-              <FaInstagram /> <span>{modelInfo.contact.instagram}</span>
-            </a>
-            <a href={`tel:${modelInfo.contact.phone}`} className="contact-link">
-              <FaPhoneAlt /> <span>{modelInfo.contact.phone}</span>
-            </a>
-            <a href={`https://wa.me/${modelInfo.contact.whatsapp.replace(/\s/g, '')}`} target="_blank" rel="noopener noreferrer" className="contact-link">
+      {/* Contact Section */}
+      <section id="model-contact-section" className="reveal">
+        <div className="container">
+          <h3 className="section-title">Get In Touch</h3>
+          <div className="contact-info">
+            <p  className="contact-link">
+              <FaPhoneAlt /> <span>{modelInfo?.contact.phone}</span>
+            </p>
+            <p  className="contact-link">
               <FaWhatsapp /> <span>WhatsApp</span>
-            </a>
-            <a href={`mailto:${modelInfo.contact.email}`} className="contact-link">
-              <FaEnvelope /> <span>{modelInfo.contact.email}</span>
-            </a>
+            </p>
+            <p  className="contact-link">
+              <FaEnvelope /> <span>{modelInfo?.contact.email}</span>
+            </p>
+            <p className="contact-link">
+              <FaInstagram /> <span>{modelInfo?.contact.instagram}</span>
+            </p>
             <div className="contact-link">
-              <FaMapMarkerAlt /> <span>{modelInfo.contact.location}</span>
+              <FaMapMarkerAlt /> <span>{modelInfo?.contact.location}</span>
             </div>
           </div>
         </div>
       </section>
     </div>
   );
-};
+}
 
 export default ModelPage;

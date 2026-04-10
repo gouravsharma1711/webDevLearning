@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -8,7 +9,7 @@ function ContactSection() {
     const sectionRef = useRef(null);
     const contentRef = useRef(null);
 
-    useEffect(() => {
+    useGSAP(() => {
         const el = sectionRef.current;
         const infoItems = contentRef.current.querySelectorAll('.info-item');
 
@@ -28,7 +29,7 @@ function ContactSection() {
     }, []);
 
     return (
-        <section id="contact-section" className="contact-section" ref={sectionRef}>
+        <section id="contact" className="contact-section" ref={sectionRef}>
             <div className="contact-container">
                 <div className="contact-header">
                     <h2 className="luxury-title">Get in <span className="gold-text">Touch</span></h2>
@@ -38,12 +39,12 @@ function ContactSection() {
                 <div className="contact-content-centered" ref={contentRef}>
                     <div className="info-item">
                         <h4 className="gold-text">Instagram</h4>
-                        <a href="https://instagram.com/luxury_project_official" target="_blank" rel="noopener noreferrer" className="contact-link">@luxury_project_official</a>
+                        <p className="contact-link">@luxury_project_official</p>
                     </div>
                     <div className="info-divider"></div>
                     <div className="info-item">
                         <h4 className="gold-text">Email</h4>
-                        <a href="mailto:hello@luxuryproject.com" className="contact-link">hello@luxuryproject.com</a>
+                        <p className="contact-link">hello@luxuryproject.com</p>
                     </div>
                 </div>
             </div>

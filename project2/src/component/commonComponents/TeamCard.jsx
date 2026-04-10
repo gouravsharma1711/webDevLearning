@@ -1,6 +1,12 @@
 import React from "react";
 
-function TeamCard({ name, role, image }) {
+function TeamCard({ name, role, image,memberId }) {
+
+  const onClickHandler = (id)=>{
+
+    window.location.href = `/team/${id}`;
+  }
+
   return (
     <div className="royal-team-card">
       <div className="embroidery-frame"></div>
@@ -21,7 +27,10 @@ function TeamCard({ name, role, image }) {
           <div className="divider-gold"></div>
           
           <div className="action-footer">
-            <button className="royal-btn">VIEW PROFILE</button>
+            <button
+             className="royal-btn"
+             onClick={()=>onClickHandler(memberId)}
+            >VIEW PROFILE</button>
           </div>
         </div>
       </div>

@@ -1,308 +1,443 @@
 #model-page {
-  width: 100%;
-  background-color: $black;
-  color: $white;
-  overflow-x: hidden;
+  // overflow-x: hidden;
+  // scrollbar-width: none;
 
-  // 🔹 Global Section Styles
-  section {
-    padding: $section-padding;
+  #Model-hero-Section {
+    height: 70vh;
+    width: 100%;
+    overflow-y: hidden;
+    @include flex-center-column();
     position: relative;
-    
-    @media (max-width: $tablet) {
-      padding: 5rem 1.5rem;
-    }
-  }
-
-  .header-icon {
-    color: $gold-mid;
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  h2 {
-    font-family: $font-luxury;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    background: $gold-gradient;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    font-weight: 400;
-  }
-
-  // 🔹 1. Hero Section
-  .model-hero {
-    height: 120vh;
-    min-height: 800px;
-    padding: 0;
-    display: flex;
-    align-items: center; // 🔹 Center content vertically
     overflow: hidden;
+    text-align: center;
 
-    @media (max-width: $tablet) {
-      height: 100vh;
-    }
+    // 🔥 Base background (deep black + gold tone)
+    background: radial-gradient(
+      circle at center,
+      rgba($gold-dark, 0.15) 0%,
+      rgba(0, 0, 0, 0.9) 40%,
+      $black 100%
+    );
 
-    .hero-bg-overlay {
+    // ✨ Light glow overlay
+    &::before {
+      content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, $black 15%, transparent 60%, rgba($black, 0.4));
-      z-index: 2;
+      background: radial-gradient(
+        circle at 50% 40%,
+        rgba($gold-light, 0.25),
+        transparent 60%
+      );
+      filter: blur(80px);
+      opacity: 0.6;
+      z-index: 0;
     }
 
-    .hero-main-img {
+    // 🎬 Subtle grain texture (cinematic feel)
+    &::after {
+      content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 110%; // 🔹 Extra for parallax
-      object-fit: cover;
-      z-index: 1;
+      inset: 0;
+      background: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+      opacity: 0.2;
+      z-index: 0;
     }
 
-    .hero-container {
-      width: 100%;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 5%; // 🔹 Removed bottom padding for vertical centering
+    h2 {
       position: relative;
-      z-index: 3;
-      display: flex;
-      justify-content: space-between;
-      align-items: center; // 🔹 Keep items aligned centrally
-
-      @media (max-width: $tablet) {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding-top: 10rem;
-      }
+      z-index: 2;
+      font-family: $font-body;
+      font-size: 1.1rem;
+      font-weight: 300;
+      letter-spacing: 0.6rem;
+      text-transform: uppercase;
+      color: rgba($white, 0.6);
+      margin-bottom: 1.2rem;
     }
 
-    .hero-content {
-      flex: 1;
-      .hero-overline {
-        font-family: $font-body;
-        color: $gold-mid;
-        text-transform: uppercase;
-        letter-spacing: 0.5em;
-        font-size: 1.5rem;
-        font-weight: 700;
-        display: block;
-        margin-bottom: 1rem;
+    h1 {
+      position: relative;
+      z-index: 2;
+      font-family: $font-luxury;
+      font-size: clamp(3.5rem, 10vw, 8rem);
+      line-height: 1;
+      text-align: center;
+      font-weight: 900;
+      text-transform: uppercase;
+
+      @include text-gold-gradient();
+
+      // ✨ Glow effect (luxury highlight)
+      text-shadow:
+        0 0 20px rgba($gold-light, 0.3),
+        0 0 40px rgba($gold-dark, 0.2);
+    }
+  }
+
+  #videoSection {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+
+  // ✅ Desktop behavior
+  height: 120vh;
+
+  #videoDiv {
+    width: 20rem;
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 5px;
+    }
+  }
+}
+
+/* ✅ FIXED MEDIA QUERY */
+@media (max-width: 703px) {
+  #videoSection {
+    height: auto;              // 🔥 shrink to content
+    padding: 2rem 0;
+  }
+
+  #videoSection #videoDiv {
+    width: 90%;                // responsive width
+    max-width: 400px;          // optional cap
+    margin: 0 auto;
+  }
+}
+
+  #about-section,
+  #stats-section,
+  #achievements-section,
+  #gallery-section,
+  #model-contact-section {
+    padding: 8rem 2rem;
+    background-color: $black;
+    color: $white;
+    position: relative;
+    overflow: hidden;
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: $font-luxury;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      text-align: center;
+      margin-bottom: 4rem;
+      @include text-gold-gradient();
+      text-transform: uppercase;
+      letter-spacing: 0.2rem;
+    }
+  }
+
+  // About Section
+  #about-section {
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+
+      .description {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: rgba($white, 0.8);
+        margin-bottom: 3rem;
       }
 
-      .model-name {
-        margin-bottom: 0.5rem;
-      }
+      .vision-box {
+        padding: 3rem;
+        border: $luxury-border;
+        background: rgba($gold-dark, 0.05);
+        position: relative;
 
-      .name-underline {
-        width: 100px;
-        height: 2px;
-        background: $gold-linear;
+        &::before {
+          content: "“";
+          position: absolute;
+          top: -10px;
+          left: 20px;
+          font-family: $font-luxury;
+          font-size: 5rem;
+          color: $gold-mid;
+          opacity: 0.3;
+        }
 
-        @media (max-width: $tablet) {
-          margin: 0 auto;
+        h4 {
+          font-family: $font-luxury;
+          font-size: 1.5rem;
+          color: $gold-light;
+          margin-bottom: 1rem;
+          text-transform: uppercase;
+        }
+
+        p {
+          font-style: italic;
+          font-size: 1.2rem;
+          color: rgba($white, 0.9);
         }
       }
     }
+  }
 
-    .hero-side-gallery {
-      display: flex;
-      gap: 1.5rem;
-      margin-left: 4rem;
+  // Stats Section
+  #stats-section {
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 2rem;
 
-      @media (max-width: $tablet) {
-        display: none; // 🔹 Hide gallery on small screens for cleaner hero
+      .stat-card {
+        padding: 2rem;
+        border: 1px solid rgba($gold-mid, 0.2);
+        background: linear-gradient(
+          145deg,
+          rgba($white, 0.05) 0%,
+          rgba($white, 0) 100%
+        );
+        transition: $transition-smooth;
+        @include flex-center-column();
+        text-align: center;
+
+        &:hover {
+          border-color: $gold-mid;
+          transform: translateY(-5px);
+          background: rgba($gold-dark, 0.1);
+        }
+
+        .stat-label {
+          font-size: 0.8rem;
+          text-transform: uppercase;
+          letter-spacing: 0.1rem;
+          color: $gold-mid;
+          margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+          font-size: 1.5rem;
+          font-family: $font-luxury;
+          font-weight: 600;
+          color: $white;
+        }
+      }
+    }
+  }
+
+  // Achievements Section
+  #achievements-section {
+    width: 100%;
+    padding: 6rem 2rem;
+    background: radial-gradient(
+      circle at top,
+      rgba($gold-dark, 0.08),
+      $black 70%
+    );
+    position: relative;
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: $font-luxury;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      margin-bottom: 4rem;
+      @include text-gold-gradient();
+      letter-spacing: 2px;
+    }
+
+    .achievements-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .achievement-item {
+      position: relative;
+      padding: 2rem;
+      border-radius: 1rem;
+
+      // 🔥 Glass effect
+      background: rgba($white, 0.03);
+      backdrop-filter: blur(12px);
+
+      border: 1px solid rgba($gold-light, 0.15);
+
+      transition: all 0.4s ease;
+      overflow: hidden;
+
+      // ✨ gold glow border effect
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 1px;
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba($gold-light, 0.6),
+          transparent
+        );
+        -webkit-mask:
+          linear-gradient(#000 0 0) content-box,
+          linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: 0.4s;
       }
 
-      .hero-side-img-wrapper {
-        width: 12rem;
-        height: 18rem;
-        border: 1px solid rgba($gold-mid, 0.3);
-        padding: 5px;
-        background: rgba($black, 0.5);
-        backdrop-filter: blur(5px);
-        transform: translateY(-2rem);
+      &:hover {
+        transform: translateY(-8px) scale(1.02);
+        background: rgba($gold-dark, 0.08);
 
-        &:nth-child(even) {
-          transform: translateY(0);
+        &::before {
+          opacity: 1;
+        }
+      }
+
+      // 🔥 Replace bullet with vertical gold accent
+      .gold-bullet {
+        display: none;
+      }
+
+      // ✨ Left accent line
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 20%;
+        height: 60%;
+        width: 3px;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          $gold-light,
+          transparent
+        );
+      }
+
+      p {
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: rgba($white, 0.9);
+        font-weight: 300;
+        letter-spacing: 0.5px;
+      }
+    }
+  }
+
+  // Gallery Section
+  #gallery-section {
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+
+      .gallery-item {
+        aspect-ratio: 3/4;
+        overflow: hidden;
+        border-radius: 4px;
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            to bottom,
+            transparent 60%,
+            rgba($black, 0.8)
+          );
+          opacity: 0;
+          transition: $transition-fast;
         }
 
         img {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        &:hover {
+          &::after {
+            opacity: 1;
+          }
+          img {
+            transform: scale(1.1);
+          }
         }
       }
     }
   }
 
-  // 🔹 2. Stats Section
-  .model-stats-section {
-    background: radial-gradient(circle at center, #0a0a0a, $black);
-
-    .stats-container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .stats-header {
-      text-align: center;
-      margin-bottom: 5rem;
-
-      .description-text {
-        max-width: 800px;
-        margin: 2rem auto 0;
-        font-family: $font-body;
-        font-size: 1.1rem;
-        line-height: 1.8;
-        color: rgba($white, 0.8);
-      }
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      border: 1px solid rgba($gold-mid, 0.1);
-      padding: 3rem;
-      background: rgba($white, 0.02);
-
-      @media (max-width: $mobile) {
-        grid-template-columns: 1fr 1fr;
-        padding: 1.5rem;
-      }
-    }
-
-    .stat-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      padding: 1rem;
-      border-bottom: 1px solid rgba($gold-mid, 0.1);
-
-      .stat-label {
-        font-family: $font-body;
-        text-transform: uppercase;
-        font-size: 0.75rem;
-        letter-spacing: 0.2em;
-        color: $gold-mid;
-      }
-
-      .stat-value {
-        font-family: $font-luxury;
-        font-size: 1.4rem;
-        color: $white;
-      }
-    }
-  }
-
-  // 🔹 3. Achievements & Vision Sections
-  .achievements-section, .vision-section {
-    .section-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .section-header {
-      margin-bottom: 3rem;
-      
-      .title-divider {
-        width: 60px;
-        height: 1px;
-        background: $gold-mid;
-        margin: 1.5rem auto;
-      }
-    }
-  }
-
-  .achievement-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    align-items: center;
-
-    li {
-      font-family: $font-body;
-      font-size: 1.2rem;
-      color: rgba($white, 0.9);
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-
-      .list-bullet {
-        width: 8px;
-        height: 8px;
-        border: 1px solid $gold-mid;
-        rotate: 45deg;
-      }
-    }
-  }
-
-  .vision-text {
-    font-family: $font-luxury;
-    font-size: 1.8rem;
-    line-height: 1.6;
-    font-style: italic;
-    color: $gold-vintage;
-  }
-
-  // 🔹 5. Contact Section
-  .contact-section {
-    background: $dark-grey;
-    border-top: 1px solid rgba($gold-mid, 0.1);
-    text-align: center;
-
-    .section-header {
-      margin-bottom: 4rem;
-      
-      p {
-        font-family: $font-body;
-        letter-spacing: 0.3em;
-        color: $gold-mid;
-        text-transform: uppercase;
-        font-size: 0.8rem;
-      }
-    }
-
-    .contact-grid {
-      display: flex;
+  // Contact Section
+  #model-contact-section {
+    padding-bottom: 12rem;
+    .contact-info {
+      @include flex-center-row();
       flex-wrap: wrap;
-      justify-content: center;
       gap: 3rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+      justify-content: center;
 
-    .contact-link {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      color: rgba($white, 0.7);
-      text-decoration: none;
-      transition: $transition-fast;
-      font-family: $font-body;
-      font-size: 1rem;
-
-      svg {
-        font-size: 1.8rem;
-        color: $gold-mid;
-        transition: $transition-fast;
-      }
-
-      &:hover {
+      .contact-link {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        text-decoration: none;
         color: $white;
+        font-size: 1.1rem;
+        transition: $transition-fast;
+        padding: 1rem 2rem;
+        border: 1px solid rgba($gold-mid, 0.3);
+        border-radius: 50px;
+
         svg {
-          transform: translateY(-5px);
-          color: $gold-bright;
+          color: $gold-light;
+          font-size: 1.5rem;
+        }
+
+        &:hover {
+          border-color: $gold-light;
+          background: rgba($gold-dark, 0.1);
+          color: $gold-light;
+          transform: translateY(-3px);
         }
       }
+    }
+  }
+
+  // Loading & Misc
+  .loading {
+    height: 100vh;
+    @include flex-center-row();
+    font-family: $font-luxury;
+    font-size: 2rem;
+    color: $gold-light;
+  }
+
+  @include respond-to("tablet") {
+    #about-section,
+    #stats-section,
+    #achievements-section,
+    #gallery-section,
+    #model-contact-section {
+      padding: 5rem 1rem;
+    }
+
+    .stat-card {
+      padding: 1.5rem !important;
     }
   }
 }

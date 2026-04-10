@@ -111,7 +111,6 @@ function HeroSection() {
             <h2>FILMIAGI FASHION WEEK</h2>
           </div>
         </div>
-        <button>EXPLORE MORE</button>
         <h4>SCROLL TO EXPLORE</h4>
       </div>
     </section>

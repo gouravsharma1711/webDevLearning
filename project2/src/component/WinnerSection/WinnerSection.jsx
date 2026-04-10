@@ -17,90 +17,73 @@ const WinnerSection = ({ title = "GRAND FINALE", subtitle = "The Hall of Fame", 
       // 🔹 Initial States
       gsap.set([".overline", ".section-title", ".title-flourish"], {
         opacity: 0,
-        y: 30,
+        y: 60,
       });
 
       gsap.set(".royal-winner-card", {
         opacity: 0,
-        y: 60,
-        scale: 0.95,
+        y: 100,
+        scale: 0.9,
       });
 
-      // 🔥 Main entrance timeline
-      const tl = gsap.timeline({
+      // 🔥 Header scrub animation
+      gsap.to([".overline", ".section-title", ".title-flourish"], {
+        opacity: 1,
+        y: 0,
+        stagger: 0.2,
         scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-          end: "top 20%",
-          toggleActions: "play none none reverse",
+          trigger: ".winner-header",
+          start: "top 90%",
+          end: "top 40%",
+          scrub: 1,
         },
       });
 
-      tl.to(".overline", {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power2.out",
-      })
-      .to(".section-title", {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "expo.out",
-      }, "-=0.3")
-      .to(".title-flourish", {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power1.out",
-      }, "-=0.4")
-      .to(".royal-winner-card", {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.8,
-        stagger: 0.15, // 🔹 Faster stagger for more cards
-        ease: "power3.out",
-      }, "-=0.2");
+      // 🔥 Cards scrub animation
+      const cards = gsap.utils.toArray(".royal-winner-card");
+      cards.forEach((card, i) => {
+        gsap.to(card, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          scrollTrigger: {
+            trigger: card,
+            start: "top 95%",
+            end: "top 60%",
+            scrub: 1.5,
+          },
+        });
+      });
 
-      // 🔥 Subtle background parallax
+      // 🔥 Background parallax
       gsap.to(".section-decoration-left", {
-        y: -150,
+        y: -100,
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top bottom",
           end: "bottom top",
-          scrub: 1.5,
+          scrub: 1,
         },
       });
 
       gsap.to(".section-decoration-right", {
-        y: 150,
+        y: 100,
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top bottom",
           end: "bottom top",
-          scrub: 1.5,
+          scrub: 1,
         },
       });
-
-      // 🔥 Gentle floating animation for cards (reduced intensity)
-      gsap.to(".royal-winner-card", {
-        y: "-=10",
-        duration: 2.5,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        stagger: {
-          each: 0.4,
-          from: "random"
-        },
-      });
-
     }, sectionRef);
 
     return () => ctx.revert();
   }, [winnersArray]);
+
+
+    const onClickHandler = (id) => {
+      window.location.href=`/artist/${id}`
+    }
 
   return (
     <section id="winner-section" ref={sectionRef}>
@@ -125,12 +108,12 @@ const WinnerSection = ({ title = "GRAND FINALE", subtitle = "The Hall of Fame", 
                 <div className="corner-flourish bottom-right"></div>
                 
                 <div className="card-image">
-                  <img src={winner.image || "/images/placeholder.jpg"} alt={winner.name} />
+                  <img src={winner?.images[0]} alt={winner.name} />
                   <div className="image-overlay"></div>
                 </div>
                 <div className="card-content">
                   <h2 className="winner-name">{winner.name}</h2>
-                  <p className="winner-year">{winner.year || "2024"}</p>
+                  <p className="winner-year">{winner?.winningEvent}</p>
                 </div>
               </div>
 
@@ -147,7 +130,9 @@ const WinnerSection = ({ title = "GRAND FINALE", subtitle = "The Hall of Fame", 
                   <p className="winner-description">
                     {winner.description || "Celebrating excellence and timeless elegance in the heart of Filmiagi's grand showcase."}
                   </p>
-                  <button className="read-more-btn">
+                  <button
+                    onClick={()=>onClickHandler(winner.id)}
+                    className="read-more-btn">
                     <span>READ MORE</span>
                   </button>
                 </div>

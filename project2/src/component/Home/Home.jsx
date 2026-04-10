@@ -4,51 +4,11 @@ import FounderSection from "../FounderSection/FounderSection.jsx";
 import TeamSection from "../TeamSection/TeamSection.jsx";
 import WinnerSection from "../WinnerSection/WinnerSection.jsx";
 import ContactSection from "../ContactSection/ContactSection.jsx";
+import HighlightSections from "../highlightsSections/highlightSections.jsx";
+import Latest from "../Latest/Latest.jsx";
 
-const winnersData = [
-  {
-    name: "Pallavi jaiswal",
-    year: "Mrs Lucknow 2025",
-    description:
-      "A vision of grace and poise, Sophia captivated the judges with her eloquence and stellar stage presence during the Grand Finale.",
-    image: "/images/model1.jpeg",
-  },
-  {
-    name: "Pallavi jaiswal",
-    year: "Mrs Lucknow 2025",
-    description:
-      "Defining modern charisma and sharp style, Marcus stood out as the epitome of the Filmiagi spirit, winning hearts and the title.",
-    image: "/images/model1.jpeg",
-  },
-  {
-    name: "Pallavi jaiswal",
-    year: "Mrs Lucknow 2025",
-    description:
-      "Defining modern charisma and sharp style, Marcus stood out as the epitome of the Filmiagi spirit, winning hearts and the title.",
-    image: "/images/model1.jpeg",
-  },
-  {
-    name: "Pallavi jaiswal",
-    year: "Mrs Lucknow 2025",
-    description:
-      "Defining modern charisma and sharp style, Marcus stood out as the epitome of the Filmiagi spirit, winning hearts and the title.",
-    image: "/images/model1.jpeg",
-  },
-  {
-    name: "Pallavi jaiswal",
-    year: "Mrs Lucknow 2025",
-    description:
-      "Defining modern charisma and sharp style, Marcus stood out as the epitome of the Filmiagi spirit, winning hearts and the title.",
-    image: "/images/model1.jpeg",
-  },
-  {
-    name: "Pallavi jaiswal",
-    year: "Mrs Lucknow 2025",
-    description:
-      "Defining modern charisma and sharp style, Marcus stood out as the epitome of the Filmiagi spirit, winning hearts and the title.",
-    image: "/images/model1.jpeg",
-  },
-];
+import modelsInfo from '../../utils/model.js'
+import latestEvent from '../../utils/latest.js'
 
 function Home() {
   return (
@@ -58,9 +18,11 @@ function Home() {
       <TeamSection />
       <WinnerSection
         title="MEET OUR CHAMPIONS"
-        winners={winnersData}
+        winners={modelsInfo}
         subtitle={"The Hall of Frame"}
       />
+      <HighlightSections/>
+      <Latest image={`${latestEvent.noticeImage}`} title={latestEvent.title}  subtitle={latestEvent.subtitle} />
       <ContactSection />
     </>
   );

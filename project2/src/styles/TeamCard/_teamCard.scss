@@ -145,6 +145,10 @@ $text-gold: #e5c158;
     text-align: center;
     padding-top: 5rem;
     padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 280px; // 🔹 Fixed height for content area
+    justify-content: space-between; // 🔹 Pushes action-footer to bottom
 
     .role-badge {
       display: inline-block;
@@ -162,20 +166,24 @@ $text-gold: #e5c158;
 
     .member-name {
       color: #fff;
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: 900;
       margin: 0;
       background: linear-gradient(180deg, #fff 30%, $gold-main 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      min-height: 4.5rem; // 🔹 Ensure space for 2 lines if needed
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .divider-gold {
       width: 80px;
       height: 3px;
       background: linear-gradient(90deg, transparent, $gold-main, $gold-light, $gold-main, transparent);
-      margin: 1.8rem auto;
+      margin: 1rem auto;
       position: relative;
       
       &::after {
@@ -190,13 +198,12 @@ $text-gold: #e5c158;
         padding: 0 5px;
       }
     }
-
-    
   }
 
   // 🔹 Action Button
   .action-footer {
-    margin: 1.5rem 1rem 0;
+    margin: auto 1rem 0; // 🔹 Pushed to bottom by flex
+    padding-bottom: 0.5rem;
 
     .royal-btn {
       width: 100%;
