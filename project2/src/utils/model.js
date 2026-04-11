@@ -15,7 +15,7 @@ const modelsInfo = [
       "/images/winners/winner1/9.jpeg",
       "/images/winners/winner1/10.jpeg",
     ],
-    video: "/videos/winners/winner2/model1.mp4",
+    video: "/videos/winners/winner1/model1.mp4",
     stats: {
       height: "5'3\"",
       weight: "50 kg",
@@ -74,7 +74,7 @@ const modelsInfo = [
       // "/images/winners/winner2/4.jpeg",
       // "/images/winners/winner2/4.jpeg",
     ],
-    video: "/videos/winners/winner2/model1.mp4",
+    video: "/videos/winners/winner1/model1.mp4",
     stats: {
       height: "5'3\"",
       weight: "50 kg",

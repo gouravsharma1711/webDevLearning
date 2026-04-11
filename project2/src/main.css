@@ -154,7 +154,7 @@ html {
 #visionary #founder-section #founder-image {
   height: 80vh;
   width: auto;
-  max-width: 90%;
+  max-width: 85vw;
   position: absolute;
   z-index: 5;
   bottom: 0;
@@ -166,6 +166,7 @@ html {
 @media (max-width: 768px) {
   #visionary #founder-section #founder-image {
     height: 60vh;
+    max-width: 95vw;
   }
 }
 #visionary #founder-section button {
@@ -475,10 +476,11 @@ nav #full-nav-menu #menu-links .menuLink:hover {
 
 .royal-team-card {
   position: relative;
-  width: 320px;
-  margin: 5px 1rem;
+  width: 300px;
+  height: 350px;
+  margin: 80px 1rem 20px;
   background: #0c0c0c;
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: 0;
   box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9);
   transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
@@ -534,8 +536,12 @@ nav #full-nav-menu #menu-links .menuLink:hover {
 }
 .royal-team-card .card-outer-frame {
   position: relative;
-  padding-top: 1rem;
+  height: 100%;
+  width: 100%;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 .royal-team-card [class^=corner-] {
   position: absolute;
@@ -597,20 +603,20 @@ nav #full-nav-menu #menu-links .menuLink:hover {
 }
 .royal-team-card .image-container {
   position: absolute;
-  top: -9rem;
+  top: -90px;
   left: 50%;
   transform: translateX(-50%);
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   z-index: 5;
   transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .royal-team-card .image-container .image-ring {
   position: absolute;
-  inset: -15px;
-  border: 3px solid transparent;
-  border-top: 3px solid #d4af37;
-  border-bottom: 3px solid #d4af37;
+  inset: -10px;
+  border: 2px solid transparent;
+  border-top: 2px solid #d4af37;
+  border-bottom: 2px solid #d4af37;
   border-radius: 50%;
   transition: all 1.5s ease;
 }
@@ -620,49 +626,50 @@ nav #full-nav-menu #menu-links .menuLink:hover {
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 50%;
-  border: 6px solid #0c0c0c;
-  outline: 2.5px solid #d4af37;
+  border: 4px solid #0c0c0c;
+  outline: 2px solid #d4af37;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
 }
 .royal-team-card .info-content {
   text-align: center;
-  padding-top: 5rem;
-  padding-bottom: 1rem;
   display: flex;
   flex-direction: column;
-  min-height: 280px;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding-top: 60px;
 }
 .royal-team-card .info-content .role-badge {
   display: inline-block;
-  padding: 0.4rem 1.5rem;
+  padding: 0.4rem 1.2rem;
   background: rgba(212, 175, 55, 0.05);
   border: 1px solid rgba(212, 175, 55, 0.15);
   color: #d4af37;
-  font-size: 0.75rem;
-  letter-spacing: 5px;
+  font-size: 0.7rem;
+  letter-spacing: 4px;
   text-transform: uppercase;
   font-weight: 800;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
   clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%);
 }
 .royal-team-card .info-content .member-name {
   color: #fff;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 900;
   margin: 0;
   background: linear-gradient(180deg, #fff 30%, #d4af37 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  min-height: 4.5rem;
+  min-height: 3.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  line-height: 1.2;
 }
 .royal-team-card .info-content .divider-gold {
-  width: 80px;
-  height: 3px;
+  width: 70px;
+  height: 2px;
   background: linear-gradient(90deg, transparent, #d4af37, #f9e29a, #d4af37, transparent);
   margin: 1rem auto;
   position: relative;
@@ -673,32 +680,33 @@ nav #full-nav-menu #menu-links .menuLink:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 10px;
+  font-size: 8px;
   color: #d4af37;
   background: #0c0c0c;
-  padding: 0 5px;
+  padding: 0 4px;
 }
-.royal-team-card .action-footer {
-  margin: auto 1rem 0;
-  padding-bottom: 0.5rem;
-}
-.royal-team-card .action-footer .royal-btn {
+.royal-team-card .info-content .action-footer {
   width: 100%;
-  padding: 1.2rem;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+.royal-team-card .info-content .action-footer .royal-btn {
+  width: 100%;
+  padding: 1rem;
   background: linear-gradient(135deg, #ae8625, #edc967, #d2ac47, #f7ef8a, #ae8625);
   background-size: 200% auto;
   background-size: 200% auto;
   border: none;
   color: #000;
-  font-size: 0.8rem;
-  letter-spacing: 4px;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
   cursor: pointer;
   font-weight: 900;
   text-transform: uppercase;
   transition: all 0.5s ease;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 }
-.royal-team-card .action-footer .royal-btn:hover {
+.royal-team-card .info-content .action-footer .royal-btn:hover {
   background-position: right center;
   transform: scale(1.05);
   box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
@@ -751,7 +759,7 @@ nav #full-nav-menu #menu-links .menuLink:hover {
 }
 #team-section .section-header {
   text-align: center;
-  margin-bottom: 12rem;
+  margin-bottom: 6rem;
   position: relative;
   z-index: 10;
 }
@@ -804,14 +812,14 @@ nav #full-nav-menu #menu-links .menuLink:hover {
 }
 #team-section #team-cards-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 12rem 2rem;
+  gap: 4rem 2rem;
   position: relative;
   z-index: 5;
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 
 .contact-section {

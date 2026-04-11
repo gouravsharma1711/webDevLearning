@@ -31,7 +31,7 @@
   // 🔹 Premium Header
   .section-header {
     text-align: center;
-    margin-bottom: 12rem; // Extra space for cards breaking boundaries
+    margin-bottom: 6rem;
     position: relative;
     z-index: 10;
 
@@ -91,13 +91,13 @@
   // 🔹 Cards Container
   #team-cards-container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 12rem 2rem; // 🔹 High vertical gap for the overlapping images
+    gap: 4rem 2rem;
     position: relative;
     z-index: 5;
-    margin-top: 5rem;
+    margin-top: 2rem;
   }
 }

@@ -3,14 +3,16 @@ import Slider from "../commonComponents/Slider";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useNavigate } from "react-router-dom";
 gsap.registerPlugin(ScrollTrigger);
 
 function FounderSection() {
   const main = useRef(null);
   const animatedContainer = useRef(null);
+  const navigate = useNavigate();
 
   const onReadMoreClick = () => {
-    window.location.href = "/team/3636d5d0-8158-4be9-8f1a-d2f9468f11db";
+    navigate("/team/3636d5d0-8158-4be9-8f1a-d2f9468f11db");
   }
 
   useGSAP(

@@ -41,6 +41,15 @@
       left: 10%;
       top: 35%;
       transform: translateY(-50%);
+
+      @include respond-to("tablet") {
+        left: 50%;
+        transform: translate(-50%, -50%);
+        top: 25%;
+        font-size: clamp(3rem, 12vw, 6rem);
+        text-align: center;
+        width: 100%;
+      }
     }
 
     h3 {
@@ -82,7 +91,7 @@
     #founder-image {
       height: 80vh;
       width: auto;
-      max-width: 90%;
+      max-width: 85vw;
       position: absolute;
       z-index: 5;
       bottom: 0;
@@ -92,6 +101,7 @@
 
       @include respond-to("tablet") {
         height: 60vh;
+        max-width: 95vw;
       }
     }
 
