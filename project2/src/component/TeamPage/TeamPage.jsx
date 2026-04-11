@@ -2,14 +2,17 @@ import React, { useMemo } from 'react'
 import { useParams, Link } from 'react-router-dom'
 
 import team from '../../utils/team.js'
+import NotFound from '../NotFound/NotFound'
 
 function TeamPage() {
     const { teamId } = useParams();
     const teamMembers = team;
     const member = useMemo(
-        () => teamMembers.find((item) => String(item.id) === String(teamId)) || teamMembers[0],
+        () => teamMembers.find((item) => String(item.id) === String(teamId)),
         [teamId]
     )
+
+    if (!member) return <NotFound />;
 
     return (
         <section className='profile-page-container'>

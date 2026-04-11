@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import scrollTrigger from "gsap/ScrollTrigger";
 import { FaInstagram, FaWhatsapp, FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
+import NotFound from "../NotFound/NotFound";
 
 gsap.registerPlugin(scrollTrigger);
 
@@ -62,7 +63,7 @@ function ModelPage() {
     },
   );
 
-  if (!modelInfo) return <div className="loading">Model not found</div>;
+  if (!modelInfo) return <NotFound />;
 
   return (
     <div ref={containerRef} id="model-page">
