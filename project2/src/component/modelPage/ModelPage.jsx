@@ -27,7 +27,7 @@ function ModelPage() {
 
   mm.add("(min-width: 703px)", () => {
     gsap.to(videoTagRef.current, {
-      scale: 5,
+      scale: 4,
       ease: "none",
       scrollTrigger: {
         trigger: videoTagRef.current,
