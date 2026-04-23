@@ -33,65 +33,7 @@ const modelsInfo = [
     description:
       "Pallavi Jaiswal is an accomplished Actor, Model and Influencer with a deep passion for acting and performance. With numerous photo shoots and creative projects under her belt, she has carved a place for herself in the entertainment industry. Known for her kind-hearted nature, friendly demeanor, and boundless energy, She constantly seeks new opportunities to grow and pursue her dreams.",
     achievements: [
-      "Crowned 2nd Runner-up in Mrs. India",
-      "Winner of multiple subtitles: Empress Fashion Icon Empress Boxing Queen, Empress Style",
-      "leon. Empress Glam Goddess Empress Multi-Laterded",
-      "Recognized for style, elegance, and confidence au Stage",
-      "Represented as a modern homemaker breaking landers, and inspiring others",
-      "Successfully competed among hundreds at tahetpants on a prestigious national platform",
-      "Inspires and motivates women to believe me themselves and follow their dreams",
-      "Fashion & Styling Love for expressing personality through outfits and trends",
-      "Fitness & Well-being-Dedicated to maintaining health, discipline, and strength",
-      "Singing Passion for mise and self-expression through voice",
-      "Dancing - Joy in rhythm masement, and artistic performance",
-      "Interior Designing teisma mn beautifying and organizing spaces",
-      "Empowerment - Hede mispling and uplifting other women",
-      "Creative Mindse misto for muuque ideas and creativity, clearly reflectedatarough Instagram profile",
-    ],
-    vision:
-      "To redefine the standards of beauty and professionalism in the fashion world, while mentoring the next generation of aspiring models to find their unique voice and confidence.",
-    contact: {
-      instagram: "@pallavijais79",
-      phone: "+91 9793292504",
-      whatsapp: "+91 9793292504",
-      email: "dhriti.pallavi@rediff.com",
-      location: "Lucknow, India",
-    },
-  },
-  {
-    id: "5daa0742-ba78-4d26-a2cc-fc80df5665dg3ecd30",
-    name: "Nihal Singh",
-    winningEvent: 'Mr Lucknow 2025',
-    images: [
-      "/images/winners/winner2/1.jpeg",
-      "/images/winners/winner2/2.jpeg",
-      "/images/winners/winner2/3.jpeg",
-      "/images/winners/winner2/4.jpeg",
-      // "/images/winners/winner2/1.jpeg",
-      // "/images/winners/winner2/2.jpeg",
-      // "/images/winners/winner2/3.jpeg",
-      // "/images/winners/winner2/4.jpeg",
-      // "/images/winners/winner2/4.jpeg",
-      // "/images/winners/winner2/4.jpeg",
-    ],
-    video: "/videos/winners/winner1/model1.mp4",
-    stats: {
-      height: "5'3\"",
-      weight: "50 kg",
-      skinColor: "Dusky",
-      eyeColor: "Black",
-      age: "45",
-      waist: '28"',
-      hips: '37"',
-      bust: '32"',
-      tattoo: "Yes",
-      passport: "Yes",
-      hairColor: "Black",
-      bodyType: "Slim",
-    },
-    description:
-      "Pallavi Jaiswal is an accomplished Actor, Model and Influencer with a deep passion for acting and performance. With numerous photo shoots and creative projects under her belt, she has carved a place for herself in the entertainment industry. Known for her kind-hearted nature, friendly demeanor, and boundless energy, She constantly seeks new opportunities to grow and pursue her dreams.",
-    achievements: [
+      "Crowned Mrs. Lucknow 2025, Winner",
       "Crowned 2nd Runner-up in Mrs. India",
       "Winner of multiple subtitles: Empress Fashion Icon Empress Boxing Queen, Empress Style",
       "leon. Empress Glam Goddess Empress Multi-Laterded",
@@ -179,6 +121,50 @@ achievements: [
           location: "Delhi, India",
     },
   },
+  {
+    id: "5daa0742-ba78-4d26-a2cc-fc80df5665dg3ecd30",
+    name: "Nihal Singh",
+    winningEvent: 'Mr Lucknow 2025',
+    images: [
+      "/images/winners/winner2/1.jpeg",
+      "/images/winners/winner2/2.jpeg",
+      "/images/winners/winner2/3.jpeg",
+      "/images/winners/winner2/4.jpeg",
+      // "/images/winners/winner2/1.jpeg",
+      // "/images/winners/winner2/2.jpeg",
+      // "/images/winners/winner2/3.jpeg",
+      // "/images/winners/winner2/4.jpeg",
+      // "/images/winners/winner2/4.jpeg",
+      // "/images/winners/winner2/4.jpeg",
+    ],
+    video: "/videos/winners/winner1/model1.mp4",
+    stats: {
+      height: "5'8\"",
+      weight: "69 kg",
+      waist: '45"'
+    },
+    description:
+      "Nihal Singh has emerged as a confident and promising personality in the fashion industry, consistently showcasing dedication and passion on every platform.",
+    achievements: [
+      "🏆 Winner – Mr Lucknow 2025 ✨ Title achieved under Filmiagi ",
+      "Nihal Singh, the winner of Mr Lucknow 2025, represents confidence, style, and determination.His journey reflects discipline, hard work, and a strong passion for modeling.",
+      "With a striking personality and powerful stage presence, he stands out on every runway. He proves that consistency and dedication always lead to success. His elegance and professionalism make him a strong and promising face in the industry.",
+      "Winning such a prestigious title has elevated his career to new heights. He believes in constant growth and pushing his limits.",
+      "His confidence inspires many aspiring models to chase their dreams.",
+      "Nihal represents the modern generation of fashion with attitude and class.",
+      "He is ready to achieve even greater milestones in the future."
+    ],
+    vision:
+      "To become a leading face in the fashion and entertainment industry, inspiring others through confidence, discipline, and hard work.",
+    contact: {
+      instagram: "@filmiagiproduction | @officialmrmissmrslucknow",
+      phone: "+91  9650801601",
+      whatsapp: "+91  9650801601",
+      email: "filmiagiproduction@gmail.com",
+      location: "Lucknow, India",
+    },
+  },
+  
 ];
 
 export default modelsInfo;
